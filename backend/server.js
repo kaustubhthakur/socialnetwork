@@ -4,6 +4,7 @@ const app = express();
 const cors = require('cors')
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
+const authrouter = require('./routes/auth')
 require('dotenv').config();
 
 app.use(express.json())
@@ -23,6 +24,7 @@ const connection = async()=>{
 connection();
 
 
+app.use('/auth',authrouter);
 app.listen(port,()=>{
     console.log(`server is running on port ${port}...`)
 })
