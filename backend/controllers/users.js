@@ -15,7 +15,13 @@ const getUsers = async(req,res)=>{
         console.error(error);
     }
 }
-
+const vote = async(req,res)=>{
+    try {
+        
+    } catch (error) {
+        console.error(error);
+    }
+}
 const deleteUser = async(req,res)=>{
     try {
         await User.findByIdAndDelete(req.params.id);
