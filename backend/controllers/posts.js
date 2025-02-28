@@ -33,4 +33,4 @@ const getPosts = async(req,res)=>{
         console.error(error);
     }
 }
-module.exports = {getPosts,getPost,createpost}
+module.exports = {getPosts,getPost,createpost,deletePost}

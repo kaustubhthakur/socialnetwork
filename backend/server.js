@@ -5,6 +5,7 @@ const cors = require('cors')
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const authrouter = require('./routes/auth')
+const postrouter = require('./routes/posts')
 require('dotenv').config();
 
 app.use(express.json())
@@ -25,6 +26,7 @@ connection();
 
 
 app.use('/auth',authrouter);
+app.use('/posts',postrouter)
 app.listen(port,  ()=> {
     console.log(`server is running on port ${port}...`)
 })
