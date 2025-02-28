@@ -25,6 +25,30 @@ const getPost = async(req,res)=>{
         console.error(error);
     }
 }
+const likeUnlikePost = async (req, res) => {
+    try {
+        const { id: postId } = req.params;
+        const userId = req.user._id;
+
+        const post = await Post.findById(postId);
+
+        if (!post) {
+            return res.status(404).json({ error: "Post not found" });
+        }
+        const userLikedPost = post.votes.includes(userId);
+        if (userLikedPost) {
+        
+            await Post.updateOne({ _id: postId }, { $pull: { votes: userId } });
+            res.status(200).json({ message: "Post unliked successfully" });
+        } else {
+            post.votes.push(userId);
+            await post.save();
+            res.status(200).json({ message: "Post liked successfully" });
+        }
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+};
 const getPosts = async(req,res)=>{
     try {
         const posts = await Post.find();
@@ -33,4 +57,4 @@ const getPosts = async(req,res)=>{
         console.error(error);
     }
 }
-module.exports = {getPosts,getPost,createpost,deletePost}
+module.exports = {getPosts,getPost,createpost,deletePost,likeUnlikePost}
