@@ -1,35 +1,13 @@
-import { useState } from "react";
+import react, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import { useRecoilState } from "recoil";
-import userAtom from "../../atoms/userAtom";
 import "./Navbar.css";
+import { useRecoilValue } from "recoil";
+import userAtom from "../../atoms/userAtom";
+// import LogoutButton from "../logout/LogoutButton";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [user, setUser] = useRecoilState(userAtom); // Replaces useRecoilValue
-
-  const handleLogout = async () => {
-    try {
-      const res = await fetch("/api/users/logout", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      const data = await res.json();
-
-      if (data.error) {
-        alert(data.error);
-        return;
-      }
-
-      localStorage.removeItem("user-threads");
-      setUser(null);
-    } catch (error) {
-      alert("Logout failed");
-    }
-  };
 
   return (
     <nav className="navbar">
@@ -41,20 +19,13 @@ const Navbar = () => {
         </div>
 
         <div className={`menu ${isOpen ? "open" : ""}`}>
-          {user ? (
-            <>
-              <Link to="/profile">Profile</Link>
-              <Link to="/create-post">Create Post</Link>
-              <button className="logout-btn" onClick={handleLogout}>
-                Logout
-              </button>
-            </>
-          ) : (
-            <>
-              <Link to="/login">Login</Link>
-              <Link to="/register">Register</Link>
-            </>
-          )}
+          <Link to="/register" className="nav-link">
+            Register
+          </Link>
+          <Link to="/login" className="nav-link">
+            Login
+          </Link>
+          {/* //<LogoutButton /> */}
         </div>
       </div>
     </nav>
