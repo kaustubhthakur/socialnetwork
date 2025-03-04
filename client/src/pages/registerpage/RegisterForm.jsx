@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useSetRecoilState } from "recoil";
 import userAtom from "../../atoms/userAtom";
+import "./RegisterForm.css"
 const RegisterForm = () => {
   const [showPassword, setShowPassword] = useState(false);
 
