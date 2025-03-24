@@ -1,0 +1,154 @@
+.navbar {
+    background-color: #ffffff;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 20px;
+  }
+  
+  .navbar-logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar-logo img {
+    height: 50px;
+    width: auto;
+  }
+  
+  .menu-icon {
+    display: none;
+    cursor: pointer;
+  }
+  
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 24px;
+    width: 30px;
+  }
+  
+  .bar {
+    width: 100%;
+    height: 3px;
+    background-color: #333;
+    border-radius: 2px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .hamburger.active .bar:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+  }
+  
+  .hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .hamburger.active .bar:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg);
+  }
+  
+  .nav-auth {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .login-button, .register-button, .profile-button, .logout-button {
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+  
+  .login-button {
+    color: #4a4a4a;
+    border: 1px solid #e0e0e0;
+    background-color: transparent;
+  }
+  
+  .login-button:hover {
+    background-color: #f5f5f5;
+  }
+  
+  .register-button {
+    color: #ffffff;
+    background-color: #3498db;
+    border: none;
+  }
+  
+  .register-button:hover {
+    background-color: #2980b9;
+  }
+  
+  .profile-button {
+    color: #333;
+    background-color: #f0f0f0;
+    border: none;
+  }
+  
+  .profile-button:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .logout-button {
+    color: #ffffff;
+    background-color: #e74c3c;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .logout-button:hover {
+    background-color: #c0392b;
+  }
+  
+  /* Responsive design */
+  @media screen and (max-width: 768px) {
+    .menu-icon {
+      display: block;
+    }
+  
+    .nav-auth {
+      position: absolute;
+      top: 80px;
+      left: 0;
+      flex-direction: column;
+      width: 100%;
+      background-color: #ffffff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 20px 0;
+      gap: 20px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-20px);
+      transition: all 0.3s ease-in-out;
+    }
+  
+    .nav-auth.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+  
+    .login-button, .register-button, .profile-button, .logout-button {
+      width: 80%;
+      max-width: 300px;
+      text-align: center;
+    }
+  }
