@@ -12,10 +12,11 @@ const UserSchema = new mongoose.Schema({
         type:String,
         required:true,
     },
-    friends:{
-        type:[String],
-        default:[],
-    },
+    friends: { 
+    type: [mongoose.Schema.Types.ObjectId], 
+    ref: 'User',
+    default:[], 
+  },
     posts:{
         type:[String],
         default:[],

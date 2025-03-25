@@ -24,6 +24,13 @@ const deletePost =async(req,res)=>{
         console.error(error);
     }
 }
+const votepost = async(req,res)=>{
+    try {
+    
+    } catch (error) {
+        console.error(error);
+    }
+}
 const getPosts = async(req,res)=>{
     try {
         const posts = await Post.find();
