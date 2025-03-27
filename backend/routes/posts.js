@@ -6,6 +6,6 @@ router.post('/',protectRoute,createPost)
 router.delete('/:id',protectRoute,deletePost)
 router.get('/:id',getPost)
 router.get('/',getPosts)
-router.put('/:id/vote',protectRoute.votepost)
+router.put('/:id/vote',protectRoute,votepost)
 router.put('/:id',protectRoute,updatePost)
 module.exports = router;
