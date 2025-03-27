@@ -21,7 +21,6 @@ const connection = async() =>{
     }
 }
 connection();
-
 app.use('/auth'  ,authrouter)
 app.use('/posts' ,postrouter)
 app.use('/users' ,userrouter);
