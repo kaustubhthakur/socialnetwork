@@ -18,7 +18,7 @@ export default function RetroRegisterPage() {
 
     const handleSignup = async () => {
         try {
-            const res = await fetch("http://localhost:9000/auth/register", {
+            const res = await fetch("https://localhost:9000/auth/register", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
