@@ -1,0 +1,468 @@
+/* NavBar.css - Enhanced Retro Styling */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+:root {
+  --retro-black: #000000;
+  --retro-white: #ffffff;
+  --retro-pink: #ff00ff;
+  --retro-cyan: #00ffff;
+  --retro-blue: #0000ff;
+  --retro-yellow: #ffff00;
+  --retro-green: #00ff00;
+  --pixel-size: 2px;
+}
+
+.retro-navbar {
+  background: var(--retro-black);
+  color: var(--retro-white);
+  font-family: 'Press Start 2P', cursive;
+  padding: 1rem;
+  position: relative;
+  z-index: 100;
+  border-bottom: 4px solid var(--retro-pink);
+  box-shadow: 
+    0 6px 0 var(--retro-cyan),
+    0 8px 0 var(--retro-blue),
+    0 10px 20px rgba(255, 0, 255, 0.3);
+  animation: scanline 8s linear infinite;
+}
+
+@keyframes scanline {
+  0% {
+    background-image: linear-gradient(
+      to bottom,
+      transparent 50%,
+      rgba(255, 0, 255, 0.05) 50%
+    );
+    background-size: 100% 4px;
+  }
+  50% {
+    background-image: linear-gradient(
+      to bottom,
+      transparent 50%,
+      rgba(0, 255, 255, 0.05) 50%
+    );
+    background-size: 100% 4px;
+  }
+  100% {
+    background-image: linear-gradient(
+      to bottom,
+      transparent 50%,
+      rgba(255, 0, 255, 0.05) 50%
+    );
+    background-size: 100% 4px;
+  }
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.navbar-container::before, .navbar-container::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: var(--pixel-size);
+  background: repeating-linear-gradient(
+    90deg,
+    var(--retro-pink),
+    var(--retro-pink) 10px,
+    var(--retro-cyan) 10px,
+    var(--retro-cyan) 20px
+  );
+  opacity: 0.5;
+}
+
+.navbar-container::before {
+  top: -8px;
+}
+
+.navbar-container::after {
+  bottom: -8px;
+}
+
+.logo {
+  position: relative;
+  padding: 0.5rem;
+}
+
+.logo h1 {
+  margin: 0;
+  color: var(--retro-white);
+  font-size: 1.8rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  animation: textGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes textGlow {
+  0% {
+    text-shadow: 
+      0 0 5px var(--retro-pink),
+      0 0 10px var(--retro-pink),
+      3px 3px 0 var(--retro-cyan);
+  }
+  100% {
+    text-shadow: 
+      0 0 10px var(--retro-pink),
+      0 0 20px var(--retro-pink),
+      0 0 30px var(--retro-pink),
+      3px 3px 0 var(--retro-cyan);
+  }
+}
+
+.logo::before, .logo::after {
+  content: '[';
+  position: absolute;
+  color: var(--retro-yellow);
+  font-size: 1.8rem;
+  top: 0.5rem;
+}
+
+.logo::before {
+  left: -15px;
+}
+
+.logo::after {
+  content: ']';
+  right: -15px;
+}
+
+.menu-items {
+  display: flex;
+  align-items: center;
+}
+
+.menu-items ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu-items li {
+  margin: 0 1.2rem;
+  position: relative;
+}
+
+.menu-items li::before {
+  content: '>';
+  position: absolute;
+  left: -14px;
+  color: var(--retro-green);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.menu-items li:hover::before {
+  opacity: 1;
+}
+
+.menu-items a {
+  color: var(--retro-white);
+  text-decoration: none;
+  font-size: 0.7rem;
+  position: relative;
+  padding: 0.5rem 0;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.menu-items a:hover {
+  color: var(--retro-yellow);
+  transform: scale(1.05);
+}
+
+.menu-items a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--retro-cyan);
+  transition: width 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.menu-items a:hover::after {
+  width: 100%;
+}
+
+.auth-buttons-desktop, .auth-buttons-mobile {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.login-btn, .register-btn {
+  font-family: 'Press Start 2P', cursive;
+  padding: 0.7rem 1.2rem;
+  border: none;
+  font-size: 0.7rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.login-btn {
+  background-color: var(--retro-black);
+  color: var(--retro-cyan);
+  border: 2px solid var(--retro-cyan);
+  box-shadow: 4px 4px 0 rgba(0, 255, 255, 0.5);
+}
+
+.login-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 255, 255, 0.3),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.login-btn:hover {
+  background-color: var(--retro-cyan);
+  color: var(--retro-black);
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 rgba(0, 255, 255, 0.5);
+}
+
+.login-btn:hover::before {
+  left: 100%;
+}
+
+.register-btn {
+  background-color: var(--retro-pink);
+  color: var(--retro-black);
+  border: 2px solid var(--retro-pink);
+  box-shadow: 4px 4px 0 rgba(255, 0, 255, 0.5);
+}
+
+.register-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.register-btn:hover {
+  background-color: var(--retro-black);
+  color: var(--retro-pink);
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 rgba(255, 0, 255, 0.5);
+}
+
+.register-btn:hover::before {
+  left: 100%;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  z-index: 101;
+  position: relative;
+  width: 35px;
+  height: 30px;
+}
+
+.bar {
+  width: 100%;
+  height: 4px;
+  background-color: var(--retro-white);
+  margin: 3px 0;
+  transition: 0.4s;
+  border-radius: 2px;
+  box-shadow: 0 0 5px var(--retro-cyan);
+}
+
+.bar.change:nth-child(1) {
+  transform: rotate(-45deg) translate(-8px, 8px);
+  background-color: var(--retro-pink);
+}
+
+.bar.change:nth-child(2) {
+  opacity: 0;
+}
+
+.bar.change:nth-child(3) {
+  transform: rotate(45deg) translate(-8px, -8px);
+  background-color: var(--retro-cyan);
+}
+
+.auth-buttons-mobile {
+  display: none;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .retro-navbar {
+    padding: 0.8rem 1rem;
+  }
+  
+  .logo h1 {
+    font-size: 1.5rem;
+  }
+  
+  .menu-items {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    flex-direction: column;
+    background: var(--retro-black);
+    width: 100%;
+    height: 100vh;
+    padding: 6rem 2rem 2rem;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    z-index: 99;
+  }
+  
+  .menu-items.active {
+    left: 0;
+    box-shadow: 
+      inset 0 0 10px var(--retro-pink),
+      inset 0 0 20px var(--retro-cyan);
+    background-image: 
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 8px,
+        rgba(255, 0, 255, 0.03) 8px,
+        rgba(255, 0, 255, 0.03) 16px
+      );
+  }
+  
+  .menu-items.active::before {
+    content: '// MENU';
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    color: var(--retro-green);
+    font-size: 0.7rem;
+  }
+  
+  .menu-items ul {
+    flex-direction: column;
+    width: 100%;
+    margin-top: 1rem;
+  }
+  
+  .menu-items li {
+    margin: 1.8rem 0;
+    text-align: center;
+    padding-left: 15px;
+  }
+  
+  .menu-items li::before {
+    left: 0;
+    top: 6px;
+  }
+  
+  .menu-items a {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    display: inline-block;
+    border: 1px solid transparent;
+  }
+  
+  .menu-items a:hover {
+    border: 1px dashed var(--retro-cyan);
+    background-color: rgba(0, 255, 255, 0.05);
+  }
+
+  .auth-buttons-desktop {
+    display: none;
+  }
+  
+  .auth-buttons-mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 3rem;
+    width: 80%;
+  }
+  
+  .auth-buttons-mobile .login-btn,
+  .auth-buttons-mobile .register-btn {
+    width: 100%;
+    max-width: 250px;
+    text-align: center;
+    font-size: 0.9rem;
+    padding: 0.8rem 1rem;
+  }
+  
+  .hamburger {
+    display: flex;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo h1 {
+    font-size: 1.2rem;
+  }
+  
+  .logo::before, .logo::after {
+    font-size: 1.5rem;
+  }
+  
+  .logo::before {
+    left: -10px;
+  }
+  
+  .logo::after {
+    right: -10px;
+  }
+}
+
+/* CRT Effect */
+.retro-navbar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%,
+    rgba(0, 0, 0, 0.1) 50%
+  );
+  background-size: 100% 4px;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Add a pixel noise effect */
+.retro-navbar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise' x='0' y='0'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
+  opacity: 0.3;
+  z-index: -1;
+  pointer-events: none;
+}

@@ -1,9 +1,41 @@
-import React from 'react'
+import React, { useState } from 'react';
+import './NavBar.css';
 
-const Navbar = () => {
+const NavBar = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   return (
-    <div>Navbar</div>
-  )
-}
+    <nav className="retro-navbar">
+      <div className="navbar-container">
+        <div className="logo">
+          <h1>SN</h1>
+        </div>
 
-export default Navbar
+        <div className={`menu-items ${menuOpen ? 'active' : ''}`}>
+        
+          <div className="auth-buttons-mobile">
+            <button className="login-btn">Login</button>
+            <button className="register-btn">Register</button>
+          </div>
+        </div>
+
+        <div className="auth-buttons-desktop">
+          <button className="login-btn">Login</button>
+          <button className="register-btn">Register</button>
+        </div>
+
+        <div className="hamburger" onClick={toggleMenu}>
+          <div className={`bar ${menuOpen ? 'change' : ''}`}></div>
+          <div className={`bar ${menuOpen ? 'change' : ''}`}></div>
+          <div className={`bar ${menuOpen ? 'change' : ''}`}></div>
+        </div>
+      </div>
+    </nav>
+  );
+};
+
+export default NavBar;
