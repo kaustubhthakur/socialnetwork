@@ -27,8 +27,8 @@ const Navbar = () => {
         {/* Navigation Links */}
         <div className={isOpen ? "navbar-menu active" : "navbar-menu"}>
           <div className="navbar-auth">
-            <button className="login-button">Login</button>
-            <button className="register-button">Register</button>
+            <a href="/login" className="login-link">Login</a>
+            <a href="/register" className="register-link">Register</a>
           </div>
         </div>
       </div>
