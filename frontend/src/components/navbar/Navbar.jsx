@@ -1,54 +1,39 @@
 import React, { useState } from 'react';
+import './Navbar.css';
 import { Link } from 'react-router-dom';
-import './Navbar.css'; // Import the CSS file
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <nav className="navbar">
       <div className="navbar-container">
-        <div className="navbar-content">
-          {/* Logo */}
-          <div className="logo">
-            <Link to="/">
-              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-              </svg>
-            </Link>
-          </div>
+        {/* Logo */}
+        <a href="/" className="logo">
+        <img className='logo-logo' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXPrDYakpuB1E4lvZbTWnXY61BM92EfEIPVw&s" alt="logo" />
+        </a>
 
-         
-
-          {/* Authentication Buttons */}
-          <div className="auth-buttons">
-            <Link to="/login" className="login-btn">Login</Link>
-            <Link to="/register" className="register-btn">Register</Link>
-          </div>
-
-          {/* Hamburger Menu Button */}
-          <button onClick={toggleMenu} className="hamburger-button">
-            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              {isOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              )}
-            </svg>
-          </button>
+        {/* Desktop Navigation */}
+        <div className="nav-links">
+          <Link to="/login" className="nav-item">Login</Link>
+          <Link to="/register" className="nav-item">Register</Link>
         </div>
-      </div>
 
-      {/* Mobile Menu */}
-      <div className={`mobile-menu ${isOpen ? 'active' : ''}`}>
-      
-        <div className="mobile-auth">
-          <Link to="/login" className="login-btn">Login</Link>
-          <Link to="/register" className="register-btn">Register</Link>
+        {/* Mobile Hamburger Icon */}
+        <button 
+          className={`hamburger ${isMenuOpen ? 'active' : ''}`}
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label="Menu"
+        >
+          <span className="bar"></span>
+          <span className="bar"></span>
+          <span className="bar"></span>
+        </button>
+
+        {/* Mobile Navigation */}
+        <div className={`mobile-nav ${isMenuOpen ? 'active' : ''}`}>
+          <Link to="/login" className="mobile-nav-item" onClick={() => setIsMenuOpen(false)}>Login</Link>
+          <Link to="/register" className="mobile-nav-item" onClick={() => setIsMenuOpen(false)}>Register</Link>
         </div>
       </div>
     </nav>
