@@ -1,9 +1,24 @@
 const Post = require('../models/Post')
+const User = require('../models/User')
+const cloudinary = require('cloudinary')
 const createPost = async(req,res)=>{
     try {
-        const newpost = new Post(req.body);
-        const savepost = await newpost.save();
-        res.status(201).json(savepost);
+    const {description ,userId} = req.body;
+    let {image} = req.body;
+    const user = await User.findById(userId)
+    if(!user)
+      {
+        return res.status(404).json({ error: "User not found" });
+      }    
+      if (image) {
+        const uploadedResponse = await cloudinary.uploader.upload(image);
+        image = uploadedResponse.secure_url;
+      }
+      const newPost = new Post({description,image,userId });
+		const savepost = await newPost.save();
+
+    res.status(201).json(savepost);
+
     } catch (error) {
         console.error(error);
     }

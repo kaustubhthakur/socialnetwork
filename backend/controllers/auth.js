@@ -1,6 +1,7 @@
 const generateTokenAndSetCookie = require('../utils/generateToken')
 const bcrypt = require('bcryptjs')
 const User = require('../models/User')
+const cloudinary = require('cloudinary')
 const register = async (req, res) => {
     try {
         const { username, email, password  } = req.body;
